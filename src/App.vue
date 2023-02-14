@@ -12,7 +12,6 @@
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
 import AddTask from './components/AddTask.vue'
-import { rmSync } from 'fs'
 
 export default {
   name: 'App',
@@ -43,7 +42,14 @@ export default {
       this.tasks = this.tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task)
     },
     async fetchTasks() {
-      const res = await fetch('http://localhost:3000/tasks')
+      const res = await fetch('api/tasks')
+
+      const data = await res.json()
+
+      return data
+    },
+    async fetchTask(id) {
+      const res = await fetch(`api/tasks/${id}`)
 
       const data = await res.json()
 
