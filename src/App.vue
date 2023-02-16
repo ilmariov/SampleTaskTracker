@@ -12,6 +12,7 @@
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
 import AddTask from './components/AddTask.vue'
+import { json } from 'body-parser'
 
 export default {
   name: 'App',
@@ -30,8 +31,17 @@ export default {
     toggleAddTask() {
       this.showAddTask = !this.showAddTask
     },
-    addTask(task) {
-      this.tasks = [...this.tasks, task]
+    async addTask(task) {
+      const res = await fetch('api/tasks', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      })
+      const data = await res.json()
+
+      this.tasks = [...this.tasks, data]
     },
     deleteTask(id) {
       if (confirm('Are you sure do you want to delete?')) {
