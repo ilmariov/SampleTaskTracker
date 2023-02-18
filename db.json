@@ -17,18 +17,6 @@
       "text": "Food Shopping",
       "day": "March 1st at 11:00am",
       "reminder": false
-    },
-    {
-      "text": "Sabaq Surveillance",
-      "day": "February 23th at 6:00am",
-      "reminder": true,
-      "id": "0o1Vi2S"
-    },
-    {
-      "text": "Go for fun",
-      "day": "February 17th at 8:00pm",
-      "reminder": false,
-      "id": "ukbsg93"
     }
   ]
 }
